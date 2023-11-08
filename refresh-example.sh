@@ -28,6 +28,10 @@ else
   # Our e2e tests themselves are obviously custom
   mkdir -p TEMP/e2e
   cp -r RNGoogleMobileAdsExample/e2e/* TEMP/e2e/
+
+  # We may have patches
+  # mkdir -p TEMP/patches
+  # cp -r RNGoogleMobileAdsExample/patches/* TEMP/patches
 fi
 
 # Purge the old sample
@@ -41,6 +45,10 @@ yarn add 'link:../'
 yarn add detox mocha jest-circus jest-environment-node @babel/preset-env typescript --dev
 #yarn add 'link:../../jet/'
 yarn add https://github.com/invertase/jet#@mikehardy/jet-next --dev
+
+# In case we have patches, add this:
+# yarn add patch-package
+# npm_config_yes=true npx json -I -f package.json -e 'this.scripts.postinstall = "patch-package"'
 
 # Java build tweak - or gradle runs out of memory during the build
 # echo "Increasing memory available to gradle for android java build"
